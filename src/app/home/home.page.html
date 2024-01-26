@@ -1,20 +1,49 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+      Pokémon :D
     </ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>ID del Ítem:</ion-label>
+    <ion-input [(ngModel)]="itemId"></ion-input>
+  </ion-item>
+  <ion-button (click)="getItemDataById()">Mostrar por ID</ion-button>
+  <ion-card *ngIf="itemDetailsById">
+    <ion-card-header>
+      
+      {{ itemDetailsById.name }} (ID: {{ itemDetailsById.id }})
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="itemDetailsById.sprites.default" alt="Imagen del Ítem"></ion-img>
+   
+      <p>Costo: {{ itemDetailsById.cost }}</p>
+      <p>Descripción: {{ itemDetailsById.effect_entries[0]?.effect }}</p>
+  
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-item>
+    <ion-label>Nombre del Ítem:</ion-label>
+    <ion-input [(ngModel)]="itemName"></ion-input>
+  </ion-item>
+  <ion-button (click)="getItemDataByName()">Mostrar por Nombre</ion-button>
+  
+  <ion-card *ngIf="itemDetailsByName">
+  <ion-card-header>
+    {{ itemDetailsByName.name }} (ID: {{ itemDetailsByName.id }})
+  </ion-card-header>
+  <ion-card-content>
+    <ion-img [src]="itemDetailsByName.sprites.default" alt="Imagen del Ítem"></ion-img>
+ 
+    <p>Costo: {{ itemDetailsByName.cost }}</p>
+    <p>Descripción: {{ itemDetailsByName.effect_entries[0]?.effect }}</p>
+  
+  </ion-card-content>
+</ion-card>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
 </ion-content>
+
+

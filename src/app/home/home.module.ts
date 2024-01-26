@@ -1,19 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';  
+
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { HomePage } from './home.page';
-
-import { HomePageRoutingModule } from './home-routing.module';
-
+import { PokeapiService } from '../Services/apiservice.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    HomePageRoutingModule
+    IonicModule,  
+    HttpClientModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: HomePage
+      }
+    ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
+  providers: [PokeapiService]
 })
 export class HomePageModule {}
